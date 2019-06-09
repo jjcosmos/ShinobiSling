@@ -17,8 +17,7 @@ public class ShopItem : MonoBehaviour
     PurchaseManager purchaseManager;
     void Start()
     {
-        priceText = transform.GetChild(0).GetComponentInChildren<TextMeshProUGUI>();
-        priceText.text = price.ToString();
+        
         
 
         purchaseManager = PurchaseManager.Instance;
@@ -35,19 +34,19 @@ public class ShopItem : MonoBehaviour
             }
         }
 
-        if (PlayerPrefs.HasKey("currentCostume"))
+        if(purchaseManager.PlayerCostume == costumeNumber)
         {
-            refresher.refreshAll(PlayerPrefs.GetInt("currentCostume"));
+            equipped = true;
+            refresher.refreshAll(costumeNumber);
         }
-        else
-        {
-            PlayerPrefs.SetInt("currentCostume", 1);
-        }
-
         UpdateGUI();
     }
 
-
+    private void Awake()
+    {
+        priceText = transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        priceText.text = price.ToString();
+    }
 
     public void TryPurchaseItem()
     {

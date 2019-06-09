@@ -35,6 +35,16 @@ public class PurchaseManager : MonoBehaviour
             PlayerPrefs.SetInt("playerCostume", 1);
             PlayerCostume = 1;
         }
+
+        if (PlayerPrefs.HasKey("currentCostume"))
+        {
+            PlayerCostume = PlayerPrefs.GetInt("currentCostume");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("currentCostume", 1);
+        }
+
     }
     private void Awake()
     {
@@ -54,6 +64,9 @@ public class PurchaseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            PlayerPrefs.DeleteAll();
+        } 
     }
 }
