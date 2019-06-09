@@ -15,6 +15,7 @@ public class AdLoader : MonoBehaviour
     private string banner_ad = "BannerAd";
     private string reward_ad = "rewardedVideo";
     private bool rewardedForCurrentAd;
+    public bool debugTextOn;
     [SerializeField] bool testModeOn;
     [SerializeField] TextMeshProUGUI debugText;
     ShowAdPlacementContent ad;
@@ -23,25 +24,29 @@ public class AdLoader : MonoBehaviour
     {
         isAdShowing = false;
         Monetization.Initialize(store_id, testModeOn);
+        debugText.text = "";
     }
 
     private void Update()
     {
-        if (Monetization.IsReady(reward_ad))
+        if (Monetization.IsReady(reward_ad) && debugTextOn)
         {
             debugText.text = "MonReady : Initialized = " + Monetization.isInitialized;
         }
-        else
+        else if(debugTextOn)
         {
             debugText.text = "MonWaiting : Initialized = " + Monetization.isInitialized;
         }
         if(ad != null)
         {
-            debugText.text = debugText.text + " : isShowing = " + ad.showing + " rw: " + ad.rewarded;
+            if (debugTextOn)
+            {
+                debugText.text = debugText.text + " : isShowing = " + ad.showing + " rw: " + ad.rewarded;
+            }
 
             if (ad.rewarded && !rewardedForCurrentAd)
             {
-                debugText.text = debugText.text + " : isShowing = " + ad.showing + " rewarded";
+                
                 rewardedForCurrentAd = true;
                 PurchaseManager.Instance.PlayerMoney += 10;
                 PlayerPrefs.SetInt("playerMoney", PurchaseManager.Instance.PlayerMoney);

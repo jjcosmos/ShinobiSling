@@ -13,6 +13,7 @@ public class ShopItem : MonoBehaviour
     public int costumeNumber = 1;
     [SerializeField] int price;
     [SerializeField] ShopRefresher refresher;
+    Image coinImage;
 
     PurchaseManager purchaseManager;
     void Start()
@@ -46,6 +47,7 @@ public class ShopItem : MonoBehaviour
     {
         priceText = transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         priceText.text = price.ToString();
+        coinImage = transform.GetChild(2).GetComponent<Image>();
     }
 
     public void TryPurchaseItem()
@@ -82,10 +84,12 @@ public class ShopItem : MonoBehaviour
         if (isOwned && !equipped)
         {
             priceText.text = "OFF";
+            coinImage.enabled = false;
         }
         else if (equipped)
         {
             priceText.text = "ON";
+            coinImage.enabled = false;
         }
     }
 
@@ -94,6 +98,7 @@ public class ShopItem : MonoBehaviour
         if (isOwned)
         {
             equipped = false;
+            coinImage.enabled = false;
         }
         UpdateGUI();
     }
