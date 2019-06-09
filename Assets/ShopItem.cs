@@ -14,6 +14,7 @@ public class ShopItem : MonoBehaviour
     [SerializeField] int price;
     [SerializeField] ShopRefresher refresher;
     Image coinImage;
+    private AudioSource audioSource;
 
     PurchaseManager purchaseManager;
     void Start()
@@ -48,6 +49,7 @@ public class ShopItem : MonoBehaviour
         priceText = transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         priceText.text = price.ToString();
         coinImage = transform.GetChild(2).GetComponent<Image>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void TryPurchaseItem()
@@ -62,6 +64,8 @@ public class ShopItem : MonoBehaviour
             UpdateGUI();
 
             purchaseManager.PlayerMoney -= price;
+
+            audioSource.PlayOneShot(audioSource.clip);
 
             PlayerPrefs.SetInt("costume_" + costumeNumber.ToString() + "_owned", 1); // 1 is owned, 0 is not
             PlayerPrefs.SetInt("playerMoney", purchaseManager.PlayerMoney);
