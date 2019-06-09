@@ -16,14 +16,17 @@ public class PlayerGrapple : MonoBehaviour
     [SerializeField] float grappleForce = 100;
     [SerializeField] Transform grapplingHook;
 
-    [SerializeField] Sprite upSpr;
-    [SerializeField] Sprite downSpr;
+    public Sprite upSpr;
+    public Sprite downSpr;
     [SerializeField] AudioClip releaseNoise;
 
     AudioSource audioSource;
     LayerMask mask;
     void Start()
     {
+        upSpr = PurchaseManager.Instance.Costumes[PurchaseManager.Instance.PlayerCostume - 1].GetFrame1();
+        downSpr = PurchaseManager.Instance.Costumes[PurchaseManager.Instance.PlayerCostume -1 ].GetFrame2();
+
         audioSource = GetComponent<AudioSource>();
         //grapplingHook.gameObject.SetActive(false);
         cam = Camera.main;
