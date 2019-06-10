@@ -106790,7 +106790,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16, y: -955}
+  m_AnchoredPosition: {x: 16, y: -1034}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &1723892140
@@ -106842,6 +106842,10 @@ MonoBehaviour:
 
 
     Ryan Jackson
+
+    &
+
+    Alex Jackson
 
 
 
@@ -106916,15 +106920,15 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -113.024, y: 0, z: -117.31604, w: 0}
+  m_margin: {x: -113.024, y: 0, z: -98.63727, w: 0}
   m_textInfo:
     textComponent: {fileID: 1723892141}
-    characterCount: 91
+    characterCount: 106
     spriteCount: 0
-    spaceCount: 22
-    wordCount: 14
+    spaceCount: 25
+    wordCount: 16
     linkCount: 0
-    lineCount: 14
+    lineCount: 17
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
