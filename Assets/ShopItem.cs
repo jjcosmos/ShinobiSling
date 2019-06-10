@@ -11,16 +11,42 @@ public class ShopItem : MonoBehaviour
     public bool equipped;
     public bool isOwned;
     public int costumeNumber = 1;
+    public bool disableOnStart;
     [SerializeField] int price;
     [SerializeField] ShopRefresher refresher;
     Image coinImage;
     private AudioSource audioSource;
 
     PurchaseManager purchaseManager;
+    private GameObject PurchaseButton;
+
+    public bool enableOnAllComplete;
+    public bool enableOnAllMarathon;
     void Start()
     {
-        
-        
+        if (!PlayerPrefs.HasKey("SpecialEnabled"))
+        {
+            PlayerPrefs.SetInt("SpecialEnabled", 0);
+        }
+
+        PurchaseButton = transform.GetChild(0).gameObject;
+        if (disableOnStart)
+        {
+            PurchaseButton.SetActive(false);
+        }
+
+        if (enableOnAllComplete)
+        {
+            if(LevelTracker.GetAllComplete())
+                PurchaseButton.SetActive(true);
+        }
+
+        if (enableOnAllMarathon)
+        {
+            if (LevelTracker.GetAllMarathon() || PlayerPrefs.GetInt("SpecialEnabled") == 1)
+                PurchaseButton.SetActive(true);
+        }
+
 
         purchaseManager = PurchaseManager.Instance;
 

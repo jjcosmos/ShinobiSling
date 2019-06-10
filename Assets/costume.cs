@@ -8,6 +8,7 @@ public class costume : MonoBehaviour
 {
     // Start is called before the first frame update
     public Sprite[] costumeFrames;
+    public bool isSpecial;
 
     public Sprite GetFrame1() {
         return costumeFrames[0];

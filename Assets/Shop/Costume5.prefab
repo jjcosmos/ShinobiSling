@@ -17,6 +17,18 @@ PrefabInstance:
       propertyPath: costumeFrames.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6181838429748318696, guid: 95dac1d7457d2964ca7725ca27911404,
+        type: 3}
+      propertyPath: costumeFrames.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300024, guid: 6af5ed54e400be6409f824eeaf10f3fb,
+        type: 3}
+    - target: {fileID: 6181838429748318696, guid: 95dac1d7457d2964ca7725ca27911404,
+        type: 3}
+      propertyPath: costumeFrames.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300010, guid: 6af5ed54e400be6409f824eeaf10f3fb,
+        type: 3}
     - target: {fileID: 7934473559497052765, guid: 95dac1d7457d2964ca7725ca27911404,
         type: 3}
       propertyPath: m_LocalPosition.x

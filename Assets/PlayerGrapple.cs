@@ -19,14 +19,24 @@ public class PlayerGrapple : MonoBehaviour
     public Sprite upSpr;
     public Sprite downSpr;
     [SerializeField] AudioClip releaseNoise;
-
+    private ColorCycle colorCycler;
     AudioSource audioSource;
     LayerMask mask;
     void Start()
     {
+        colorCycler = GetComponent<ColorCycle>();
+        
         upSpr = PurchaseManager.Instance.Costumes[PurchaseManager.Instance.PlayerCostume - 1].GetFrame1();
         downSpr = PurchaseManager.Instance.Costumes[PurchaseManager.Instance.PlayerCostume -1 ].GetFrame2();
+        if(PurchaseManager.Instance.Costumes[PurchaseManager.Instance.PlayerCostume - 1].isSpecial)
+        {
+            colorCycler.enabled = true;
+        }
+        else
+        {
 
+            colorCycler.enabled = false;
+        }
         audioSource = GetComponent<AudioSource>();
         //grapplingHook.gameObject.SetActive(false);
         cam = Camera.main;
